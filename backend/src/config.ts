@@ -2,7 +2,7 @@ import "dotenv/config";
 
 export const PORT = Number(process.env.PORT) || 3000;
 export const FRONTEND_ORIGIN =
-  process.env.FRONTEND_ORIGIN || "http://localhost:5173";
+  process.env.FRONTEND_ORIGIN || "https://deploy-example-fo8h.vercel.app/";
 export const JWT_SECRET =
   process.env.JWT_SECRET || "clave-de-practica-no-usar-en-produccion";
 
