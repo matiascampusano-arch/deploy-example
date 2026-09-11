@@ -1,5 +1,8 @@
-import { model, Schema } from "mongoose";
-const userSchema = new Schema({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UserModel = void 0;
+const mongoose_1 = require("mongoose");
+const userSchema = new mongoose_1.Schema({
     email: {
         type: String,
         required: true,
@@ -13,4 +16,4 @@ const userSchema = new Schema({
         select: false,
     },
 }, { timestamps: true });
-export const UserModel = model("User", userSchema);
+exports.UserModel = (0, mongoose_1.model)("User", userSchema);

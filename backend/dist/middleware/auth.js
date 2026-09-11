@@ -1,6 +1,12 @@
-import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../config.js";
-export function authMiddleware(req, res, next) {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.authMiddleware = authMiddleware;
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const config_js_1 = require("../config.js");
+function authMiddleware(req, res, next) {
     const header = req.headers.authorization || "";
     const [scheme, token] = header.split(" ");
     if (scheme !== "Bearer" || !token) {
@@ -10,7 +16,7 @@ export function authMiddleware(req, res, next) {
         return;
     }
     try {
-        const payload = jwt.verify(token, JWT_SECRET);
+        const payload = jsonwebtoken_1.default.verify(token, config_js_1.JWT_SECRET);
         if (typeof payload.sub !== "string") {
             throw new Error("El token no contiene un usuario válido.");
         }

@@ -1,16 +1,19 @@
-import type { NextFunction, Request, Response } from "express";
+import type { NextFunction, Response } from "express";
 
 import { UserModel } from "../models/User.js";
+import type { AuthenticatedRequest } from "../types/AuthenticatedRequest.js";
 
 export async function getCurrentUser(
-  req: Request,
+  req: AuthenticatedRequest,
   res: Response,
   next: NextFunction,
 ): Promise<void> {
   try {
     const user = await UserModel.findById(req.userId);
     if (!user) {
-      res.status(404).json({ message: "El usuario dueño de este token ya no existe." });
+      res
+        .status(404)
+        .json({ message: "El usuario dueño de este token ya no existe." });
       return;
     }
 

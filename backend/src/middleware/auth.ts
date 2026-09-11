@@ -1,15 +1,21 @@
-import type { NextFunction, Request, Response } from "express";
+import type { NextFunction, Response } from "express";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 
 import { JWT_SECRET } from "../config.js";
+import type { AuthenticatedRequest } from "../types/AuthenticatedRequest.js";
 
-export function authMiddleware(req: Request, res: Response, next: NextFunction): void {
+export function authMiddleware(
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction,
+): void {
   const header = req.headers.authorization || "";
   const [scheme, token] = header.split(" ");
 
   if (scheme !== "Bearer" || !token) {
     res.status(401).json({
-      message: "Falta el token de autorización (Authorization: Bearer <token>).",
+      message:
+        "Falta el token de autorización (Authorization: Bearer <token>).",
     });
     return;
   }
