@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "API de autenticación de práctica para la actividad del Webinar 1 (Sprint 15) — registro, login y '¿quién soy?' con JWT.",
   "main": "dist/server.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "start": "node dist/server.js",

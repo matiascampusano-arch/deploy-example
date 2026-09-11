@@ -3,7 +3,10 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../config.js";
 import { UserModel } from "../models/User.js";
 function isDuplicateKeyError(error) {
-    return typeof error === "object" && error !== null && "code" in error && error.code === 11000;
+    return (typeof error === "object" &&
+        error !== null &&
+        "code" in error &&
+        error.code === 11000);
 }
 export async function signup(req, res, next) {
     const { email, password } = req.body || {};
