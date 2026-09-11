@@ -4,5 +4,7 @@ import { signin, signup } from "../controllers/authController.js";
 
 export const authRouter = Router();
 
-authRouter.post("/signup", signup);
-authRouter.post("/signin", signin);
+import { limiter } from "../middleware/limiter.js";
+
+authRouter.post("/signup", limiter, signup);
+authRouter.post("/signin", limiter, signin);
