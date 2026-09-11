@@ -6,10 +6,5 @@ export const FRONTEND_ORIGIN =
 export const JWT_SECRET =
   process.env.JWT_SECRET || "clave-de-practica-no-usar-en-produccion";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error(
-    "Falta MONGODB_URI en backend/.env para conectar con MongoDB Atlas.",
-  );
-}
-
-export const MONGODB_URI = process.env.MONGODB_URI;
+export const MONGODB_URI =
+  "mongodb+srv://matias_ayhungry:6COmli5zfBhQTLqK@cluster0.wn7yor8.mongodb.net/cohort41?appName=Cluster0";
