@@ -3,7 +3,7 @@
 
 import type { LoginResult, User } from "../types/auth";
 
-const AUTH_BASE_URL = "http://localhost:3000";
+const AUTH_BASE_URL = "https://deploy-example-tau-coral.vercel.app";
 
 // Ayudante propio: las respuestas de esta API tienen otra forma que las de tu
 // propia API, así que vale la pena tener su propia función para llamarla.
@@ -35,13 +35,19 @@ export async function getCurrentUser(token: string): Promise<User> {
 }
 
 // Del Webinar 1 — ya funciona, no hace falta tocar nada acá hoy.
-export async function registerUser(email: string, password: string): Promise<User> {
+export async function registerUser(
+  email: string,
+  password: string,
+): Promise<User> {
   const { user } = await authRequest("/signup", { email, password });
   return user;
 }
 
 // Del Webinar 1 — ya funciona, no hace falta tocar nada acá hoy.
-export async function loginUser(email: string, password: string): Promise<LoginResult> {
+export async function loginUser(
+  email: string,
+  password: string,
+): Promise<LoginResult> {
   const { token } = await authRequest("/signin", { email, password });
   const user = await getCurrentUser(token);
   return { token, user };
