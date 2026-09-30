@@ -3,7 +3,7 @@
 
 import type { LoginResult, User } from "../types/auth";
 
-const AUTH_BASE_URL = "https://deploy-example-tau-coral.vercel.app";
+const AUTH_BASE_URL = import.meta.env.VITE_AUTH_BASE_URL;
 
 // Ayudante propio: las respuestas de esta API tienen otra forma que las de tu
 // propia API, así que vale la pena tener su propia función para llamarla.
