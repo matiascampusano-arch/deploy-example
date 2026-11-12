@@ -19,7 +19,7 @@ app.use(cors({ origin: FRONTEND_ORIGIN }));
 app.get("/", (_req, res) => {
   res.json({
     ok: true,
-    message: "API de autenticación de práctica — Sprint 15",
+    message: "API de autenticación de práctica — Sprint 16, para el grupo 44",
   });
 });
 
